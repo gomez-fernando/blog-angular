@@ -2,7 +2,7 @@
   <!-- CONTENEDOR PRINCIPAL -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <!-- NAVBAR -->
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" [routerLink]="['/inicio']">
       <img src="assets/images/minecraft.png" width="30" height="30" alt="">
       Minecraft Blog</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -13,31 +13,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['/inicio']">Inicio <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Categorías</a>
+          <a class="nav-link" [routerLink]="['/inicio']">Categorías</a>
         </li>
       </ul>
       <ul class="navbar-nav navbar-right">
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Registro</a>
+          <a class="nav-link" [routerLink]="['/registro']">Registro</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" [routerLink]="['/inicio']" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Nick usuario
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Crear entrada</a>
-            <a class="dropdown-item" href="#">Crear categoría</a>
+            <a class="dropdown-item" [routerLink]="['/inicio']">Crear entrada</a>
+            <a class="dropdown-item" [routerLink]="['/inicio']">Crear categoría</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Mi perfil</a>
-            <a class="dropdown-item" href="#">Ajustes</a>
-            <a class="dropdown-item" href="#">Cerrar sesión</a>
+            <a class="dropdown-item" [routerLink]="['/inicio']">Mi perfil</a>
+            <a class="dropdown-item" [routerLink]="['/inicio']">Ajustes</a>
+            <a class="dropdown-item" [routerLink]="['/inicio']">Cerrar sesión</a>
           </div>
         </li>
       </ul>
