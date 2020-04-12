@@ -1,7 +1,15 @@
 <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-3">
   <h1>{{ pageTitle }}</h1>
 
-  <p>Regístrate para poder crear entradas mucho más !!!</p>
+  <p *ngIf="status != 'success'">Regístrate para poder crear entradas mucho más !!!</p>
+
+  <!-- mostrar mensajes de exito o error en la petición  -->
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    El registro se ha completado correctamente, <a [routerLink]="['/login']">Ya puedes acceder</a>
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    El registro no se ha completado correctamente.
+  </div>
 
   <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
     <div class="form-group">

@@ -13,6 +13,7 @@ import { UserService } from '../../services/user.service';
 export class RegisterComponent implements OnInit {
   public pageTitle: string;
   public user: User;
+  public status: string;
 
   constructor(private userService: UserService) {
     this.pageTitle = 'Regístrate';
@@ -25,7 +26,22 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form) {
-    console.log(this.user);
-    form.reset();
+    // console.log(this.user);
+    this.userService.register(this.user).subscribe(
+      (response) => {
+        if (response.status === 'success') {
+          console.log(response);
+          this.status = response.status;
+          form.reset();
+        } else {
+          console.log(response);
+          this.status = 'error';
+        }
+      },
+      (error) => {
+        this.status = 'error';
+        console.log(error as any);
+      }
+    );
   }
 }
