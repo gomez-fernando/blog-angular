@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
-import { Observable } from 'rxjs';
+import { isGeneratedFile } from '@angular/compiler/src/aot/util';
+// import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -19,13 +21,18 @@ export class LoginComponent implements OnInit {
 
   constructor(
     // crear la propiedad userService
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.pageTitle = 'Identifícate';
     this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '', '');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Se ejecuta siempre y cierra sesión solo cuando le llega el parámetro sure por la url
+    this.logout();
+  }
 
   onSubmit(form) {
     // console.log(this.user);
@@ -47,6 +54,9 @@ export class LoginComponent implements OnInit {
               // console.log(this.identity);
               localStorage.setItem('token', this.token);
               localStorage.setItem('identity', JSON.stringify(this.identity));
+
+              // redireccion a inicio
+              this.router.navigate(['inicio']);
             },
             (error) => {
               this.status = error;
@@ -61,5 +71,23 @@ export class LoginComponent implements OnInit {
         console.log(error as any);
       }
     );
+  }
+
+  logout() {
+    this.route.params.subscribe((params) => {
+      // con + lo casteamos a un entero
+      let logout = +params['sure'];
+
+      if (logout === 1) {
+        localStorage.removeItem('identity');
+        localStorage.removeItem('token');
+
+        this.identity = null;
+        this.token = null;
+
+        // redireccion a inicio
+        this.router.navigate(['inicio']);
+      }
+    });
   }
 }
