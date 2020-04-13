@@ -46,7 +46,9 @@
     <div class="form-group">
       <label for="description">Biografía</label>
       <textarea [froalaEditor]="froalaOptions" class="form-control" id="description" name="description"
-        #description="ngModel" [(ngModel)]="user.description">{{ user.description }}</textarea>
+        #description="ngModel" [(ngModel)]="user.description"></textarea>
+      <small class="invalid-feedback d-block" *ngIf="!description.valid && description.touched">El campo no es
+        válido</small>
 
     </div>
     <div class="form-group">
@@ -70,6 +72,6 @@
       <small class="invalid-feedback d-block" *ngIf="!password.valid && password.touched">La contraseña no es
         válida</small>
     </div> -->
-    <input type="submit" class="btn btn-primary mt-1 mb-5" value="Guardar cambios" [disabled]="userEditForm.invalid" />
+    <input type="submit" class="btn btn-primary" value="Guardar cambios" [disabled]="userEditForm.invalid" />
   </form>
 </div>

@@ -68,7 +68,6 @@ export class UserService {
     } else {
       this.identity = null;
     }
-    // console.log(identity.name);
     return this.identity;
   }
 

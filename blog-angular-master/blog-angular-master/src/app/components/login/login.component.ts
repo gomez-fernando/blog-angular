@@ -49,8 +49,6 @@ export class LoginComponent implements OnInit {
               // devuelve el usuario identificado
               this.identity = response;
 
-              // console.log(JSON.stringify(this.identity));
-
               // persistir en el local storage
               // console.log(this.token);
               // console.log(this.identity);

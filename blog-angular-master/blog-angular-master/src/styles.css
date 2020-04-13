@@ -1,0 +1,32 @@
+html
+  body
+  app-root
+  div.container
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+  div#navbarSupportedContent.collapse.navbar-collapse
+  ul.navbar-nav.navbar-right {
+  align-items: baseline;
+}
+
+.avatar-edit {
+  display: flex;
+  align-items: baseline;
+}
+.avatar-edit img {
+  width: 100px;
+  margin: 0 0 20px 10px;
+}
+.avatar-edit span {
+  margin-left: 10px;
+}
+.avatar-mask {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 10px;
+}
+.avatar-mask img {
+  width: 40px;
+  height: 40px;
+}
