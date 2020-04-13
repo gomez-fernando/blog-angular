@@ -3,7 +3,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <!-- NAVBAR -->
     <a class="navbar-brand" [routerLink]="['/inicio']">
-      <img src="assets/images/minecraft.png" width="30" height="30" alt="">
+      <img src="assets/images/minecraft.png" width="40" height="40" alt="">
       Minecraft Blog</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,6 +28,11 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/registro']" *ngIf="!identity">Registro</a>
         </li>
+        <li class="nav-item" *ngIf="identity && identity.image">
+          <div class="avatar-mask">
+            <img src="{{ url + 'user/avatar/' + identity.image }}" alt="">
+          </div>
+        </li>
         <li class="nav-item dropdown" *ngIf="identity && identity.nick">
           <a class="nav-link dropdown-toggle" [routerLink]="['/inicio']" id="navbarDropdown" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,7 +43,7 @@
             <a class="dropdown-item" [routerLink]="['/inicio']">Crear categoría</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" [routerLink]="['/inicio']">Mi perfil</a>
-            <a class="dropdown-item" [routerLink]="['/inicio']">Ajustes</a>
+            <a class="dropdown-item" [routerLink]="['/ajustes']">Ajustes</a>
             <a class="dropdown-item" [routerLink]="['/logout/1']">Cerrar sesión</a>
           </div>
         </li>
