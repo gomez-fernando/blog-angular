@@ -6,10 +6,10 @@
   <hr>
 
   <!-- mostrar mensajes de exito o error en la petición  -->
-  <div class="alert alert-success" *ngIf="status == 'success'">
+  <div class="alert alert-success" *ngIf="status === 'success'">
     La categoría creado correctamente.
   </div>
-  <div class="alert alert-danger" *ngIf="status == 'error'">
+  <div class="alert alert-danger" *ngIf="status === 'error'">
     La categoría no se ha creado correctamente.
   </div>
 

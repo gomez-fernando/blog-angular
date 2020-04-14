@@ -7,8 +7,9 @@ import { global } from './global';
 @Injectable()
 export class CategoryService {
   public url: string;
+  // public category: Category;
 
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
     this.url = global.url;
   }
 
@@ -27,5 +28,20 @@ export class CategoryService {
     return this.http.post(this.url + 'category' + params, {
       headers: headers,
     });
+
+    // return this.http.post(
+    //   'http://api-rest-laravel.test/api/categoryjson={"id":1,"name":ccc"}',
+    //   { headers: headers }
+    // );
+  }
+
+  getCategories(): Observable<any> {
+    let headers = new HttpHeaders().set(
+      'Content-Type',
+      'application/x-www-form-urlencoded'
+    );
+
+    console.log('esta es la peticion: ' + JSON.stringify(headers));
+    return this.http.get(this.url + 'category' + { headers: headers });
   }
 }

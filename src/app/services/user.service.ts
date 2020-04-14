@@ -27,6 +27,10 @@ export class UserService {
       'application/x-www-form-urlencoded'
     );
 
+    console.log(this.url + 'register' + params, {
+      headers: headers,
+    });
+
     return this.http.post(this.url + 'register', params, { headers: headers });
   }
 
