@@ -1,8 +1,9 @@
 <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-3">
   <h1>{{ pageTitle }}</h1>
-  <p>Aquí puedes modificar los datos de tu cuenta</p>
+  <p *ngIf="status != 'success'">
+    Aquí puedes modificar los datos de tu cuenta
+  </p>
   <hr>
-  <!-- <p *ngIf="status != 'success'">Regístrate para poder crear entradas mucho más !!!</p> -->
 
   <!-- mostrar mensajes de exito o error en la petición  -->
   <div class="alert alert-success" *ngIf="status == 'success'">

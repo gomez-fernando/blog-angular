@@ -20,6 +20,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CategoryNewComponent } from './components/category-new/category-new.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HomeComponent,
     ErrorComponent,
     UserEditComponent,
+    CategoryNewComponent,
   ],
   // en imports se cargan los modulos
   imports: [
