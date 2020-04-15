@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { CategoryService } from '../../services/category.service';
 import { Post } from '../../models/post';
+import { global } from '../../services/global';
 
 @Component({
   selector: 'app-post-new',
@@ -20,6 +21,32 @@ export class PostNewComponent implements OnInit {
     placeholderText: 'Escribe aquí tu post!',
     linkText: true,
     charCounterCount: true,
+  };
+  public afuConfig = {
+    multiple: false,
+    formatsAllowed: '.jpg,.png, .jpeg, .gif',
+    maxSize: '20',
+    uploadAPI: {
+      url: global.url + 'post/upload',
+      headers: {
+        // 'Content-Type': 'text/plain;charset=UTF-8',
+        Authorization: this.userService.getToken(),
+      },
+    },
+    theme: 'attachPin',
+    hideProgressBar: false,
+    hideResetBtn: false,
+    hideSelectBtn: false,
+    attachPinText: 'Seleccionar archivo',
+    replaceTexts: {
+      selectFileBtn: 'Seleccionar archivo',
+      resetBtn: 'Reset',
+      uploadBtn: 'Subir',
+      dragNDropBox: 'Suelta tu archivo aquí',
+      attachPinBtn: 'Seleccionar archivos...',
+      afterUploadMsg_success: 'Subido con éxito !',
+      afterUploadMsg_error: 'Fallo al subir el archivo !',
+    },
   };
 
   constructor(
@@ -45,13 +72,18 @@ export class PostNewComponent implements OnInit {
       (response) => {
         if (response.status === 'success') {
           this.categories = response.categories;
-          console.log('categorias son: ');
-          console.log(this.categories);
+          // console.log('categorias son: ');
+          // console.log(this.categories);
         }
       },
       (error) => {
         console.log('error');
       }
     );
+  }
+
+  imageUpload(data) {
+    let imageData = JSON.parse(data.response);
+    this.post.image = imageData.image;
   }
 }
