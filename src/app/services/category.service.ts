@@ -41,7 +41,9 @@ export class CategoryService {
       'application/x-www-form-urlencoded'
     );
 
-    console.log('esta es la peticion: ' + JSON.stringify(headers));
-    return this.http.get(this.url + 'category' + { headers: headers });
+    // console.log('esta es la peticion desde category.service');
+    // console.log(this.url + 'category' + { headers: headers });
+    // hay que quitarle headers para que funcione
+    return this.http.get(this.url + 'category');
   }
 }

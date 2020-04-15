@@ -31,7 +31,9 @@ export class UserService {
       headers: headers,
     });
 
-    return this.http.post(this.url + 'register', params, { headers: headers });
+    return this.http.post(this.url + 'register', params, {
+      headers: headers,
+    });
   }
 
   signIn(user, getToken = null): Observable<any> {

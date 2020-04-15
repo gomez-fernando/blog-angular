@@ -47,7 +47,7 @@ export class CategoryNewComponent implements OnInit {
       },
       (error) => {
         this.status = 'error';
-        console.log('estamos aquí');
+        console.log('estamos aquí en el error desde category-new.component.ts');
         console.log(error as any);
       }
     );

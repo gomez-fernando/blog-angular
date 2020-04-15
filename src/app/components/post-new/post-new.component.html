@@ -1,0 +1,38 @@
+<div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-3">
+  <h1>{{ pageTitle }}</h1>
+
+  <hr>
+
+  <!-- mostrar mensajes de exito o error en la petición  -->
+
+
+  <!-- <form #postNewForm="ngForm" (ngSubmit)="onSubmit(postNewForm)"> -->
+  <form #postNewForm="ngForm">
+    <div class=" form-group">
+      <label for="title">Nombre</label>
+      <!-- <input type="text" class="form-control" id="title" title="title" #title="ngModel" [(ngModel)]="post.title" required
+          pattern="[a-zA-Z]+"> -->
+      <input type="text" class="form-control" id="title" name="title" #title="ngModel" [(ngModel)]="post.title"
+        required />
+      <small class="invalid-feedback d-block" *ngIf="!title.valid && title.touched">El título no es válido</small>
+    </div>
+    <div class="form-group">
+      <label for="content">Contenido</label>
+      <textarea [froalaEditor]="froalaOptions" required class="form-control" id="content" name="content"
+        #content="ngModel" [(ngModel)]="post.content">{{ post.content }}</textarea>
+      <small class="invalid-feedback d-block" *ngIf="!content.valid && content.touched">El contenido no es
+        válido</small>
+    </div>
+    <div class=" form-group">
+      <label for="categoryId">Categoría</label>
+      <select class="form-control" id="categoryId" name="categoryId" #categoryId="ngModel" [(ngModel)]="post.categoryId"
+        required>
+        <option *ngFor="let category of categories" value="{{ category.id }}">
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Guardar" [disabled]="postNewForm.invalid" />
+  </form>
+
+</div>

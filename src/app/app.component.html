@@ -17,11 +17,28 @@
       <ul class="navbar-nav navbar-right">
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['/inicio']">Inicio <span class="sr-only"
-              *ngIf="identity && identity.nick">(current)</span></a>
+              *ngIf="identity">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/inicio']" *ngIf="identity && identity.nick">Categorías</a>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" [routerLink]="['/inicio']" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categorías
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul id="">
+              <li *ngFor="let category of categories">
+                <a class="dropdown-item" [routerLink]="['/crear-entrada']">{{ category.name }}</a>
+              </li>
+            </ul>
+
+          </div>
         </li>
+
+
+        <!--<li class="nav-item" *ngFor="let category of categories">
+          <a class="nav-link" [routerLink]="['/inicio']">{{ category.name }}</a>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/login']" *ngIf="!identity">Login</a>
         </li>
@@ -39,7 +56,7 @@
             {{ identity.nick }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="['/inicio']">Crear entrada</a>
+            <a class="dropdown-item" [routerLink]="['/crear-entrada']">Crear entrada</a>
             <a class="dropdown-item" [routerLink]="['/crear-categoria']">Crear categoría</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" [routerLink]="['/inicio']">Mi perfil</a>
@@ -59,6 +76,7 @@
   <!-- <app-login></app-login>
   <app-register></app-register> -->
   <router-outlet></router-outlet>
+
   <!-- END CONTENIDO -->
 
 </div> <!-- END CONTENEDOR PRINCIPAL-->
