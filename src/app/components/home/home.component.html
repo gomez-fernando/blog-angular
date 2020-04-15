@@ -1,3 +1,33 @@
-<h1>Inicio</h1>
+<div class="loading text-center" *ngIf="!posts">
+  Cargando
+</div>
 
-<p>home works!</p>
+<div class="container-fluid mt-3" *ngIf="posts">
+  <h1>{{ pageTitle }}</h1>
+  <hr>
+
+  <div class="card-columns">
+    <article class="card w-100" *ngFor="let post of posts">
+      <div class="card-header">
+        <h3><a [routerLink]="['/entrada', post.id]">{{ post.title }}</a></h3>
+      </div>
+      <div class="card-body">
+        <div class="post-image w-100" *ngIf="post.image">
+          <img src="{{ url + 'post/image/' + post.image }}" class="w-100" alt="">
+        </div>
+        <div class="post-image w-100" *ngIf="!post.image">
+          <img src="assets/images/thumbnail-default.jpg" class="w-100" alt="">
+        </div>
+        <div class="card-footer">
+          <div class="post-buttons">
+            <a [routerLink]="['/entrada', post.id]" class="btn btn-success my-1 mx-1">Leer más</a>
+            <a *ngIf="identity && identity.sub === post.user_id" [routerLink]="['/inicio']"
+              class="btn btn-warning my-1 mx-1">Editar</a>
+            <a *ngIf="identity && identity.sub === post.user_id" [routerLink]="['/inicio']"
+              class="btn btn-danger my-1 mx-1">Borrar</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

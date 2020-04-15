@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { CategoryService } from '../../services/category.service';
+import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post';
 import { global } from '../../services/global';
 
@@ -9,7 +10,7 @@ import { global } from '../../services/global';
   selector: 'app-post-new',
   templateUrl: './post-new.component.html',
   styleUrls: ['./post-new.component.css'],
-  providers: [UserService, CategoryService],
+  providers: [UserService, CategoryService, PostService],
 })
 export class PostNewComponent implements OnInit {
   public pageTitle: string;
@@ -17,6 +18,7 @@ export class PostNewComponent implements OnInit {
   public token;
   public post: Post;
   public categories;
+  public status: string;
   public froalaOptions = {
     placeholderText: 'Escribe aquí tu post!',
     linkText: true,
@@ -53,7 +55,8 @@ export class PostNewComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private postService: PostService
   ) {
     this.pageTitle = 'Crear una entrada';
     this.identity = this.userService.getIdentity();
@@ -85,5 +88,25 @@ export class PostNewComponent implements OnInit {
   imageUpload(data) {
     let imageData = JSON.parse(data.response);
     this.post.image = imageData.image;
+  }
+
+  onSubmit(form) {
+    // console.log(this.post);
+    // console.log(this.postService.pruebas());
+    this.postService.create(this.token, this.post).subscribe(
+      (response) => {
+        if (response.status === 'success') {
+          this.post = response.post;
+          this.status = 'success';
+          this.router.navigate(['/inicio']);
+        } else {
+          this.status = 'error';
+        }
+      },
+      (error) => {
+        console.log(error as any);
+        this.status = 'error';
+      }
+    );
   }
 }

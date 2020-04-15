@@ -22,6 +22,7 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CategoryNewComponent } from './components/category-new/category-new.component';
 import { PostNewComponent } from './components/post-new/post-new.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PostNewComponent } from './components/post-new/post-new.component';
     UserEditComponent,
     CategoryNewComponent,
     PostNewComponent,
+    PostDetailComponent,
   ],
   // en imports se cargan los modulos
   imports: [

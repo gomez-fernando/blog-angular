@@ -1,13 +1,21 @@
 <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-3">
   <h1>{{ pageTitle }}</h1>
-
+  <p *ngIf="status != 'success'">
+    Añade un nuevo artículo al blog
+  </p>
   <hr>
 
   <!-- mostrar mensajes de exito o error en la petición  -->
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Los datos se han guardado correctamente.
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    Los datos no se han guardado correctamente.
+  </div>
 
 
-  <!-- <form #postNewForm="ngForm" (ngSubmit)="onSubmit(postNewForm)"> -->
-  <form #postNewForm="ngForm">
+  <!--<form #postNewForm="ngForm">-->
+  <form #postNewForm="ngForm" (ngSubmit)="onSubmit(postNewForm)">
     <div class=" form-group">
       <label for="title">Nombre</label>
       <!-- <input type="text" class="form-control" id="title" title="title" #title="ngModel" [(ngModel)]="post.title" required
@@ -24,9 +32,9 @@
         válido</small>
     </div>
     <div class=" form-group">
-      <label for="categoryId">Categoría</label>
-      <select class="form-control" id="categoryId" name="categoryId" #categoryId="ngModel" [(ngModel)]="post.categoryId"
-        required>
+      <label for="category_id">Categoría</label>
+      <select class="form-control" id="category_id" name="category_id" #category_id="ngModel"
+        [(ngModel)]="post.category_id" required>
         <option *ngFor="let category of categories" value="{{ category.id }}">
           {{ category.name }}
         </option>
@@ -40,7 +48,7 @@
       <angular-file-uploader [config]="afuConfig" (ApiResponse)="imageUpload($event)">
       </angular-file-uploader>
     </div>
-    <input type="submit" class="btn btn-primary" value="Guardar" [disabled]="postNewForm.invalid" />
+    <input type="submit" class="btn btn-primary mb-3" value="Guardar" [disabled]="postNewForm.invalid" />
   </form>
 
 </div>
