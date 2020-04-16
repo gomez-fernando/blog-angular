@@ -26,6 +26,9 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
 
+import { UserService } from './services/user.service';
+import { IdentityGuard } from './services/identity.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +55,7 @@ import { CategoryDetailComponent } from './components/category-detail/category-d
     AngularFileUploaderModule,
   ],
   // en providers se cargan los servicios
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders, IdentityGuard, UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
