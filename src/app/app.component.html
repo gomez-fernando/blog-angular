@@ -21,14 +21,14 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" [routerLink]="['/inicio']" id="navbarDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="dropdownCategories" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             Categorías
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu" aria-labelledby="dropdownCategories">
             <ul id="">
               <li *ngFor="let category of categories">
-                <a class="dropdown-item" [routerLink]="['/crear-entrada']">{{ category.name }}</a>
+                <a class="dropdown-item" [routerLink]="['/categoria', category.id]">{{ category.name }}</a>
               </li>
             </ul>
 
@@ -51,8 +51,8 @@
           </div>
         </li>
         <li class="nav-item dropdown" *ngIf="identity && identity.nick">
-          <a class="nav-link dropdown-toggle" [routerLink]="['/inicio']" id="navbarDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             {{ identity.nick }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">

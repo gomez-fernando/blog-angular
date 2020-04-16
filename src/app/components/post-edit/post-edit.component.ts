@@ -8,17 +8,19 @@ import { global } from '../../services/global';
 
 @Component({
   selector: 'app-post-new',
-  templateUrl: './post-new.component.html',
-  styleUrls: ['./post-new.component.css'],
+  // reutilizamos el template de post new
+  templateUrl: '../post-new/post-new.component.html',
   providers: [UserService, CategoryService, PostService],
 })
-export class PostNewComponent implements OnInit {
+export class PostEditComponent implements OnInit {
   public pageTitle: string;
   public identity;
   public token;
   public post: Post;
   public categories;
   public status: string;
+  public category;
+  public user;
   public isEdit: boolean;
   public froalaOptions = {
     placeholderText: 'Escribe aquí tu post!',
@@ -59,15 +61,16 @@ export class PostNewComponent implements OnInit {
     private categoryService: CategoryService,
     private postService: PostService
   ) {
-    this.pageTitle = 'Crear una entrada';
+    this.pageTitle = 'Editar entrada';
     this.identity = this.userService.getIdentity();
     this.token = this.userService.getToken();
-    this.isEdit = false;
+    this.isEdit = true;
   }
 
   ngOnInit(): void {
     this.post = new Post(1, this.identity.sub, 1, '', '', null, null);
     this.getCategories();
+    this.getPost();
     // console.log(this.post);
     // console.log('este user id : ' + this.identity.sub);
   }
@@ -87,6 +90,41 @@ export class PostNewComponent implements OnInit {
     );
   }
 
+  getPost() {
+    // sacar el id del post de la url
+    this.route.params.subscribe((params) => {
+      let id = +params['id'];
+      // console.log(id);
+
+      // petición ajax para sacar los datos del post
+      this.postService.getPost(id).subscribe(
+        (response) => {
+          if (response.status === 'success') {
+            this.post = response.post;
+            this.category = response.post.category;
+            this.user = response.post.user;
+
+            // console.log('response');
+            // console.log(response);
+
+            // console.log('post');
+            // console.log(this.post);
+            // console.log('categoria');
+            // console.log(this.category);
+            // console.log('usuario');
+            // console.log(this.user);
+          } else {
+            this.router.navigate(['inicio']);
+          }
+        },
+        (error) => {
+          console.log(error as any);
+          this.router.navigate(['inicio']);
+        }
+      );
+    });
+  }
+
   imageUpload(data) {
     let imageData = JSON.parse(data.response);
     this.post.image = imageData.image;
@@ -95,12 +133,12 @@ export class PostNewComponent implements OnInit {
   onSubmit(form) {
     // console.log(this.post);
     // console.log(this.postService.pruebas());
-    this.postService.create(this.token, this.post).subscribe(
+    this.postService.update(this.token, this.post, this.post.id).subscribe(
       (response) => {
         if (response.status === 'success') {
-          this.post = response.post;
+          // this.post = response.post;
           this.status = 'success';
-          this.router.navigate(['/inicio']);
+          this.router.navigate(['/entrada', this.post.id]);
         } else {
           this.status = 'error';
         }

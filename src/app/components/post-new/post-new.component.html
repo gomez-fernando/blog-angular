@@ -1,17 +1,20 @@
 <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-3">
   <h1>{{ pageTitle }}</h1>
-  <p *ngIf="status != 'success'">
+  <p *ngIf="isEdit === false">
     Añade un nuevo artículo al blog
+  </p>
+  <p *ngIf="isEdit !== false && post">
+    Estás editando: {{ post.title }}
   </p>
   <hr>
 
   <!-- mostrar mensajes de exito o error en la petición  -->
-  <div class="alert alert-success" *ngIf="status == 'success'">
+  <!--<div class="alert alert-success" *ngIf="status == 'success'">
     Los datos se han guardado correctamente.
   </div>
   <div class="alert alert-danger" *ngIf="status == 'error'">
     Los datos no se han guardado correctamente.
-  </div>
+  </div>-->
 
 
   <!--<form #postNewForm="ngForm">-->

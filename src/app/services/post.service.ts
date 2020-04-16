@@ -44,4 +44,23 @@ export class PostService {
 
     return this.http.get(this.url + 'post/' + id, { headers: headers });
   }
+
+  update(token, post, id): Observable<any> {
+    let json = JSON.stringify(post);
+    let params = `json=${json}`;
+
+    let headers = new HttpHeaders()
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Authorization', token);
+
+    return this.http.put(this.url + 'post/' + id, params, { headers: headers });
+  }
+
+  delete(token, id) {
+    let headers = new HttpHeaders()
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Authorization', token);
+
+    return this.http.delete(this.url + 'post/' + id, { headers: headers });
+  }
 }

@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
-    console.log('Web app cargada correctamente :)');
+    // console.log('Web app cargada correctamente :)');
     this.getCategories();
   }
 
@@ -47,8 +47,8 @@ export class AppComponent implements OnInit, DoCheck {
         if (response.status === 'success') {
           this.categories = response.categories;
 
-          console.log('se han conseguido las categorias');
-          console.log(this.categories);
+          // console.log('se han conseguido las categorias');
+          // console.log(this.categories);
         }
       },
       (error) => {

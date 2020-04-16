@@ -21,11 +21,11 @@ export class CategoryService {
       .set('Content-Type', 'application/x-www-form-urlencoded')
       .set('Authorization', token);
 
-    console.log(this.url + 'category' + params, {
-      headers: headers,
-    });
+    // console.log(this.url + 'category', params, {
+    //   headers: headers,
+    // });
 
-    return this.http.post(this.url + 'category' + params, {
+    return this.http.post(this.url + 'category', params, {
       headers: headers,
     });
 
@@ -33,6 +33,32 @@ export class CategoryService {
     //   'http://api-rest-laravel.test/api/categoryjson={"id":1,"name":ccc"}',
     //   { headers: headers }
     // );
+  }
+
+  getCategory(id): Observable<any> {
+    let headers = new HttpHeaders().set(
+      'Content-Type',
+      'application/x-www-form-urlencoded'
+    );
+
+    // console.log('esta es la peticion desde category.service');
+    // console.log(this.url + 'category' + { headers: headers });
+    // hay que quitarle headers para que funcione
+    return this.http.get(this.url + 'category/' + id, { headers: headers });
+  }
+
+  getPosts(id): Observable<any> {
+    let headers = new HttpHeaders().set(
+      'Content-Type',
+      'application/x-www-form-urlencoded'
+    );
+
+    // console.log('esta es la peticion desde category.service');
+    // console.log(this.url + 'category' + { headers: headers });
+    // hay que quitarle headers para que funcione
+    return this.http.get(this.url + 'post/category/' + id, {
+      headers: headers,
+    });
   }
 
   getCategories(): Observable<any> {
@@ -44,6 +70,6 @@ export class CategoryService {
     // console.log('esta es la peticion desde category.service');
     // console.log(this.url + 'category' + { headers: headers });
     // hay que quitarle headers para que funcione
-    return this.http.get(this.url + 'category');
+    return this.http.get(this.url + 'category', { headers: headers });
   }
 }

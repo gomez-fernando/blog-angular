@@ -11,6 +11,8 @@ import { PostService } from '../../services/post.service';
 })
 export class PostDetailComponent implements OnInit {
   public post: Post;
+  public category;
+  public user;
 
   constructor(
     private postService: PostService,
@@ -32,8 +34,19 @@ export class PostDetailComponent implements OnInit {
       this.postService.getPost(id).subscribe(
         (response) => {
           if (response.status === 'success') {
-            this.post = response.posts;
+            this.post = response.post;
+            this.category = response.post.category;
+            this.user = response.post.user;
+
+            console.log('response');
+            console.log(response);
+
+            console.log('post');
             console.log(this.post);
+            console.log('categoria');
+            console.log(this.category);
+            console.log('usuario');
+            console.log(this.user);
           } else {
             this.router.navigate(['inicio']);
           }
