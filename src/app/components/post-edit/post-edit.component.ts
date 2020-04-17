@@ -22,8 +22,15 @@ export class PostEditComponent implements OnInit {
   public category;
   public user;
   public isEdit: boolean;
+  public url: string;
+  // public froalaOptions = {
+  //   placeholderText: 'Escribe aquí tu post!',
+  //   linkText: true,
+  //   charCounterCount: true,
+  // };
   public froalaOptions = {
     placeholderText: 'Escribe aquí tu post!',
+    language: 'es',
     linkText: true,
     charCounterCount: true,
   };
@@ -65,6 +72,7 @@ export class PostEditComponent implements OnInit {
     this.identity = this.userService.getIdentity();
     this.token = this.userService.getToken();
     this.isEdit = true;
+    this.url = global.url;
   }
 
   ngOnInit(): void {

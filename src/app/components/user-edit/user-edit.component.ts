@@ -17,8 +17,14 @@ export class UserEditComponent implements OnInit {
   public token;
   public status;
   public url;
+  // public froalaOptions = {
+  //   placeholderText: 'Escribe aquí tu post!',
+  //   linkText: true,
+  //   charCounterCount: true,
+  // };
   public froalaOptions = {
-    placeholderText: 'Dí algo sobre tí!',
+    placeholderText: 'Escribe aquí tu post!',
+    language: 'es',
     linkText: true,
     charCounterCount: true,
   };

@@ -17,6 +17,12 @@ export class PostService {
   }
 
   create(token, post): Observable<any> {
+    // limpiar campo post.content pasando las html entities a utf8
+    post.content = global.htmlEntities(post.content);
+    post.content = global.htmlEntities(post.content);
+    post.content = global.htmlEntities(post.content);
+    post.content = global.htmlEntities(post.content);
+    post.content = global.htmlEntities(post.content);
     let json = JSON.stringify(post);
     let params = `json=${json}`;
 
@@ -46,6 +52,12 @@ export class PostService {
   }
 
   update(token, post, id): Observable<any> {
+    // limpiar campo post.content pasando las html entities a utf8
+    post.content = global.htmlEntities(post.content);
+    post.content = global.htmlEntities(post.content);
+    post.content = global.htmlEntities(post.content);
+    post.content = global.htmlEntities(post.content);
+    post.content = global.htmlEntities(post.content);
     let json = JSON.stringify(post);
     let params = `json=${json}`;
 

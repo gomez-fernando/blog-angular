@@ -4,5 +4,8 @@
   <h1>{{ post.title }}</h1>
   <p><strong>Categoría:</strong> {{ category.name }} <strong>| Autor :</strong> {{ user.name }} {{ user.surname }}</p>
   <hr>
-  <p [innerHTML]="post.content"></p>
+  <div class="col-4">
+    <!-- <p>{{ post.content }}</p> -->
+    <p [innerHTML]="post.content"></p>
+  </div>
 </div>

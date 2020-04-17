@@ -53,6 +53,12 @@ export class UserService {
   }
 
   update(token, user): Observable<any> {
+    // limpiar campo user.description pasando las html entities a utf8
+    user.description = global.htmlEntities(user.description);
+    user.description = global.htmlEntities(user.description);
+    user.description = global.htmlEntities(user.description);
+    user.description = global.htmlEntities(user.description);
+    user.description = global.htmlEntities(user.description);
     // convertimos el objeto de javascript a un json que podemos enviar al api
     let json = JSON.stringify(user);
     let params = 'json=' + json;
