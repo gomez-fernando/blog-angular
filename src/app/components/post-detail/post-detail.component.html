@@ -2,7 +2,9 @@
 
 <div col-md-10 col-lg-8 mt-3 *ngIf="post">
   <h1>{{ post.title }}</h1>
-  <p><strong>Categoría:</strong> {{ category.name }} <strong>| Autor :</strong> {{ user.name }} {{ user.surname }}</p>
+  <p><strong>Categoría:</strong> <a [routerLink]="['/categoria', category.id]"> {{ category.name }}</a> <strong>| Autor
+      :</strong> <a [routerLink]="['/perfil', post.user_id]"> {{ user.name }} {{ user.surname }}</a>
+  </p>
   <hr>
   <div class="col-4">
     <!-- <p>{{ post.content }}</p> -->

@@ -28,6 +28,7 @@ import { CategoryDetailComponent } from './components/category-detail/category-d
 
 import { UserService } from './services/user.service';
 import { IdentityGuard } from './services/identity.guard';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { IdentityGuard } from './services/identity.guard';
     PostDetailComponent,
     PostEditComponent,
     CategoryDetailComponent,
+    ProfileComponent,
   ],
   // en imports se cargan los modulos
   imports: [
