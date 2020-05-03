@@ -1,25 +1,29 @@
-<div class="loading text-center" *ngIf="!posts">
-  Cargando
-</div>
-
-<div class="container-fluid mt-3" *ngIf="posts">
-  <div class="card">
-    <div class="card-header text-center">
-      <h1 *ngIf="user.id !== identity.sub">Posts de {{ user.nick }}</h1>
-      <h1 *ngIf="user.id === identity.sub">Mis posts</h1>
+<div class="v-container">
+  <div class="row justify-content-center">
+    <div *ngIf="!posts" class="text-center">
+      <img class="loader" src="assets/images/loader.gif" alt="">
     </div>
-    <div class="profile-card">
-      <div *ngIf="user.image" class="avatar-mask">
-        <img src="{{ url + 'user/avatar/' + user.image }}" alt="imagen del usuario">
-      </div>
-      <div class="paragraph">
-        <p [innerHTML]="user.description"></p>
-      </div>
-    </div>
-
   </div>
-  <hr>
 
-  <!-- LISTADO DE COMPONENTES -->
-  <app-post-list [posts]="posts" [identity]="identity" [url]="url"></app-post-list>
+  <div class="container-fluid mt-3" *ngIf="posts">
+    <div class="card">
+      <div class="card-header text-center">
+        <h1 *ngIf="user.id !== identity.sub">Posts de {{ user.nick }}</h1>
+        <h1 *ngIf="user.id == identity.sub">Mis posts</h1>
+      </div>
+      <div class="profile-card">
+        <div *ngIf="user.image" class="avatar-mask">
+          <img src="{{ url + 'user/avatar/' + user.image }}" alt="imagen del usuario">
+        </div>
+        <div class="paragraph">
+          <p [innerHTML]="user.description"></p>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <!-- LISTADO DE COMPONENTES -->
+    <app-post-list [posts]="posts" [identity]="identity" [url]="url"></app-post-list>
+  </div>
+
 </div>

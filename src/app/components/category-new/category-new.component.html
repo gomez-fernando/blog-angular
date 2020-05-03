@@ -1,25 +1,28 @@
-<div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-3">
-  <h1>{{ pageTitle }}</h1>
-  <p *ngIf="status != 'success'">
-    Crea una nueva categoría para el blog.
-  </p>
-  <hr>
+<div class="v-container">
+  <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mt-3">
+    <h1>{{ pageTitle }}</h1>
+    <p *ngIf="status != 'success'">
+      Crea una nueva categoría para el blog.
+    </p>
+    <hr>
 
-  <!-- mostrar mensajes de exito o error en la petición  -->
-  <div class="alert alert-success" *ngIf="status === 'success'">
-    La categoría creado correctamente.
-  </div>
-  <div class="alert alert-danger" *ngIf="status === 'error'">
-    La categoría no se ha creado correctamente.
-  </div>
-
-  <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)">
-    <div class="form-group">
-      <label for="name">Nombre</label>
-      <input type="text" class="form-control" id="name" name="name" #name="ngModel" [(ngModel)]="category.name" required
-        pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$">
-      <small class="invalid-feedback d-block" *ngIf="!name.valid && name.touched">El nombre no es válido</small>
+    <!-- mostrar mensajes de exito o error en la petición  -->
+    <div class="alert alert-success" *ngIf="status == 'success'">
+      La categoría creado correctamente.
     </div>
-    <input type="submit" class="btn btn-primary mt-1 mb-5" value="Guardar" [disabled]="categoryForm.invalid" />
-  </form>
+    <div class="alert alert-danger" *ngIf="status == 'error'">
+      La categoría no se ha creado correctamente.
+    </div>
+
+    <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)">
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" class="form-control" id="name" name="name" #name="ngModel" [(ngModel)]="category.name"
+          required pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$">
+        <small class="invalid-feedback d-block" *ngIf="!name.valid && name.touched">El nombre no es válido</small>
+      </div>
+      <input type="submit" class="btn btn-primary mt-1 mb-5" value="Guardar" [disabled]="categoryForm.invalid" />
+    </form>
+  </div>
+
 </div>

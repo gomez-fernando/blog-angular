@@ -8,6 +8,31 @@ html
   align-items: baseline;
 }
 
+.v-container {
+  min-height: 500px;
+}
+.v-container-home {
+  min-height: 467px;
+}
+.loader {
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .loader {
+    width: 80%;
+  }
+}
+#navbarSupportedContent {
+  display: flex;
+}
+#navbarSupportedContent ul {
+  text-align: end;
+}
+.dropdown-menu.show {
+  margin-bottom: 5px;
+  margin-left: -83px;
+}
+
 .avatar-edit {
   display: flex;
   align-items: baseline;
@@ -75,4 +100,34 @@ html
   /* display: inline-block; */
   width: 70%;
   text-align: center;
+}
+
+footer {
+  max-width: 100%;
+  background-color: #007bff;
+}
+.copyright {
+  display: flex;
+  justify-content: center;
+  background-color: var(--oscuro);
+  margin: 0 0 0 0;
+  text-align: center;
+  padding: 1rem;
+}
+
+.copyright a {
+  text-decoration: none;
+  transition: 0.3s ease all;
+}
+
+.copyright a:visited {
+  color: rgb(255, 255, 255, 0.8);
+}
+
+.copyright a:hover {
+  text-decoration: none;
+  color: yellow;
+  margin-left: 10px;
+  margin-right: 10px;
+  transform: scale(1.1);
 }

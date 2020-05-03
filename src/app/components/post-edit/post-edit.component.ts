@@ -111,8 +111,9 @@ export class PostEditComponent implements OnInit {
             this.post = response.post;
             this.category = response.post.category;
             this.user = response.post.user;
+            console.log('exito');
 
-            if (this.post.user_id !== this.identity.sub) {
+            if (this.post.user_id != this.identity.sub) {
               this.router.navigate(['inicio']);
             }
 

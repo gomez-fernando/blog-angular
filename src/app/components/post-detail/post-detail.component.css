@@ -1,0 +1,9 @@
+.container-fluid img {
+  max-width: 100%;
+}
+
+@media (min-width: 576px) {
+  .container-fluid img {
+    max-width: 50%;
+  }
+}

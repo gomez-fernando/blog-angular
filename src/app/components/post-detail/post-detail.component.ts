@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
 import { UserService } from '../../services/user.service';
+import { global } from '../../services/global';
 
 @Component({
   selector: 'app-post-detail',
@@ -11,6 +12,8 @@ import { UserService } from '../../services/user.service';
   providers: [PostService, UserService],
 })
 export class PostDetailComponent implements OnInit {
+  @Input() url;
+
   public post: Post;
   public category;
   public user;
@@ -23,6 +26,7 @@ export class PostDetailComponent implements OnInit {
     private userService: UserService
   ) {
     this.identity = this.userService.getIdentity();
+    this.url = global.url;
   }
 
   ngOnInit(): void {

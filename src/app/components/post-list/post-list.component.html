@@ -1,53 +1,56 @@
-<div class="card-columns">
-  <article class="card w-100" *ngFor="let post of posts">
-    <div class="card-header">
-      <h3><a [routerLink]="['/entrada', post.id]">{{ post.title }}</a></h3>
-    </div>
-    <div class="card-body">
-      <div class="post-image w-100" *ngIf="post.image">
-        <img src="{{ url + 'post/image/' + post.image }}" class="w-100" alt="">
+<div class="v-container">
+  <div class="card-columns">
+    <article class="card w-100" *ngFor="let post of posts">
+      <div class="card-header">
+        <h3><a [routerLink]="['/entrada', post.id]">{{ post.title }}</a></h3>
       </div>
-      <div class="post-image w-100" *ngIf="!post.image">
-        <img src="assets/images/thumbnail-default.jpg" class="w-100" alt="">
-      </div>
-      <div class="card-footer">
-        <div class="post-buttons">
-          <a [routerLink]="['/entrada', post.id]" class="btn btn-success my-1 mx-1">Leer más</a>
-          <a *ngIf="identity && identity.sub === post.user_id" [routerLink]="['/editar-entrada', post.id]"
-            class="btn btn-warning my-1 mx-1">Editar</a>
-          <!--<a *ngIf="identity && identity.sub === post.user_id" (click)="deletePost(post.id)"
-            class="btn btn-danger my-1 mx-1">Borrar</a>-->
+      <div class="card-body">
+        <div class="post-image w-100" *ngIf="post.image">
+          <img src="{{ url + 'post/image/' + post.image }}" class="w-100" alt="">
+        </div>
+        <div class="post-image w-100" *ngIf="!post.image">
+          <img src="assets/images/thumbnail-default.jpg" class="w-100" alt="">
+        </div>
+        <div class="card-footer">
+          <div class="post-buttons">
+            <a [routerLink]="['/entrada', post.id]" class="btn btn-success my-1 mx-1">Leer más</a>
+            <a *ngIf="identity && identity.sub == post.user_id" [routerLink]="['/editar-entrada', post.id]"
+              class="btn btn-warning my-1 mx-1">Editar</a>
+            <!-- <a *ngIf="identity && identity.sub == post.user_id" (click)="deletePost(post.id)"
+              class="btn btn-danger my-1 mx-1">Borrar</a> -->
 
-          <!-- Button trigger modal -->
-          <button type="button" *ngIf="identity && identity.sub === post.user_id" class="btn btn-danger my-1 mx-1"
-            data-toggle="modal" [attr.data-target]="'#modal-' + post.id">
-            Borrar
-          </button>
+            <!-- Button trigger modal -->
+            <button type="button" *ngIf="identity && identity.sub == post.user_id" class="btn btn-danger my-1 mx-1"
+              data-toggle="modal" [attr.data-target]="'#modal-' + post.id">
+              Borrar
+            </button>
 
-          <!-- Modal -->
-          <div class="modal fade" id="modal-{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Confirmación necesaria</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  Se borrará definitivamente: <strong>{{ post.title }}</strong>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                  <a *ngIf="identity && identity.sub === post.user_id" (click)="deletePost(post.id)"
-                    class="btn btn-danger my-1 mx-1" data-dismiss="modal">Borrar</a>
+            <!-- Modal -->
+            <div class="modal fade" id="modal-{{post.id}}" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmación necesaria</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Se borrará definitivamente: <strong>{{ post.title }}</strong>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <a *ngIf="identity && identity.sub == post.user_id" (click)="deletePost(post.id)"
+                      class="btn btn-danger my-1 mx-1" data-dismiss="modal">Borrar</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </article>
+    </article>
+  </div>
+
 </div>

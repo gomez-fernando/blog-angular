@@ -1,5 +1,8 @@
 export const global = {
-  url: 'http://api-rest-laravel.test/api/',
+  // url: 'http://api-rest-laravel.test/api/',
+  // url: 'https://amazingweb.website/api-rest-blog-laravel/api/',
+  url: 'https://amazingweb.website/api-rest-blog-laravel/public/api/',
+  // url: 'https://amazingweb.website/public/api/',
 
   htmlEntities: (str) => {
     return String(str)

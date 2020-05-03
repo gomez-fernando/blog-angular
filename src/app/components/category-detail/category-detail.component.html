@@ -1,20 +1,25 @@
-<div class="loading text-center" *ngIf="!category">
-  Cargando
-</div>
-
-<div class="container-fluid mt-3" *ngIf="category">
-  <h1>{{ category.name }}</h1>
-  <hr>
-
-  <div class="loading text-center" *ngIf="!posts">
-    Cargando listado ..
+<div class="v-container">
+  <div class="row justify-content-center">
+    <div *ngIf="!category" class="text-center">
+      <img class="loader" src="assets/images/loader.gif" alt="">
+    </div>
   </div>
 
-  <div class="alert alert-warning" *ngIf="posts && posts.length === 0">
-    No hay posts para mostrar en esta categoría
-  </div>
+  <div class="container-fluid mt-3" *ngIf="category">
+    <h1>{{ category.name }}</h1>
+    <hr>
 
-  <!-- LISTADO DE COMPONENTES -->
-  <app-post-list [posts]="posts" [identity]="identity" [url]="url"></app-post-list>
+    <div class="loading text-center" *ngIf="!posts">
+      Cargando listado ..
+    </div>
+
+    <div class="alert alert-warning" *ngIf="posts && posts.length == 0">
+      No hay posts para mostrar en esta categoría
+    </div>
+
+    <!-- LISTADO DE COMPONENTES -->
+    <app-post-list [posts]="posts" [identity]="identity" [url]="url"></app-post-list>
+
+  </div>
 
 </div>

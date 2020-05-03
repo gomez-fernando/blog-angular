@@ -1,9 +1,9 @@
 <div class="container">
   <!-- CONTENEDOR PRINCIPAL -->
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <!-- NAVBAR -->
     <a class="navbar-brand" [routerLink]="['/inicio']">
-      <img src="assets/images/minecraft.png" width="40" height="40" alt="">
+      <img src="assets/images/minecraft.png" width="40" height="40" alt="" class="mr-3">
       Minecraft Blog</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,8 +14,8 @@
       <ul class="navbar-nav mr-auto">
 
       </ul>
-      <ul class="navbar-nav navbar-right">
-        <li class="nav-item active">
+      <ul class="navbar-nav">
+        <li class="nav-item">
           <a class="nav-link" [routerLink]="['/inicio']">Inicio <span class="sr-only"
               *ngIf="identity">(current)</span></a>
         </li>
@@ -46,7 +46,7 @@
           <a class="nav-link" [routerLink]="['/registro']" *ngIf="!identity">Registro</a>
         </li>
         <li class="nav-item" *ngIf="identity && identity.image">
-          <div class="avatar-mask">
+          <div class="avatar-mask ml-auto">
             <img src="{{ url + 'user/avatar/' + identity.image }}" alt="">
           </div>
         </li>
@@ -78,5 +78,14 @@
   <router-outlet></router-outlet>
 
   <!-- END CONTENIDO -->
+
+  <footer class="shadow w-screen">
+    <div class="flex items-center justify-center flex-wrap bg-green-400 p-6">
+      <p class="copyright font-semibold text-xl">
+        <a href="https://gomez-fernando.github.io/portfolio/" target="_blank" rel="noopener noreferrer">Developed by
+          Fernando Gómez &copy; 2020</a>
+      </p>
+    </div>
+  </footer>
 
 </div> <!-- END CONTENEDOR PRINCIPAL-->
